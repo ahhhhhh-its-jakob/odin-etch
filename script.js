@@ -17,7 +17,7 @@ function createGrid(rowLength = 16){
         tile.style.height = tileSize + "px";
 
         tile.addEventListener('mouseover', () => {
-            tile.classList.add('filled-tile');
+            randomizeColor(tile);
         });
         etchContainer.appendChild(tile);
 
@@ -28,6 +28,14 @@ function createGrid(rowLength = 16){
 function deleteGrid(){
     const containerToBeDeleted = document.querySelector('.etch-container');
     containerToBeDeleted.remove();
+}
+
+function randomizeColor(tile){
+    let red = Math.floor(Math.random() * 255);
+    let blue = Math.floor(Math.random() * 255);
+    let green = Math.floor(Math.random() * 255);
+
+    tile.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
 }
 
 const resetButton = document.querySelector('#reset-btn');

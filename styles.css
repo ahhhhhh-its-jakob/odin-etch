@@ -17,11 +17,6 @@ body{
     border: 5px solid black;
 }
 
-.tile{
-    width: 30px;
-    height: 30px;
-}
-
 .filled-tile{
     background-color: blueviolet;
 }
