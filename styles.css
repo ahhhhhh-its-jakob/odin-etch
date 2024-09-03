@@ -6,6 +6,7 @@ body{
     display:flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
 .etch-container{
@@ -23,4 +24,8 @@ body{
 
 .filled-tile{
     background-color: blueviolet;
+}
+
+#reset-btn{
+    margin: 50px;
 }
