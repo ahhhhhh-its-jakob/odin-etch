@@ -1,10 +1,9 @@
-let numOfTiles = 0;
 const body = document.querySelector('body');
 
-//16 x 16 grid, means we need 256 tiles
 function createGrid(rowLength = 16){
+    let numOfTiles = 0;
     let totalTiles = rowLength ** 2;
-    let containerSize = 480;
+    let containerSize = 480; //pixels
     let tileSize = containerSize/rowLength;
 
     const etchContainer = document.createElement('div');
@@ -25,5 +24,22 @@ function createGrid(rowLength = 16){
         numOfTiles++;
     }
 }
+
+function deleteGrid(){
+    const containerToBeDeleted = document.querySelector('.etch-container');
+    containerToBeDeleted.remove();
+}
+
+const resetButton = document.querySelector('#reset-btn');
+resetButton.addEventListener('click', () => {
+    let desiredRows = prompt('Enter the number of rows you would like! (Between 1 - 100)');
+
+    while(desiredRows > 100 || desiredRows <= 0){
+        desiredRows = prompt('You entered an invalid number. Please enter a number between 1 and 100');
+    }
+
+    deleteGrid();
+    createGrid(desiredRows);
+});
 
 createGrid();
