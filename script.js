@@ -15,9 +15,10 @@ function createGrid(rowLength = 16){
 
         tile.style.width = tileSize + "px";
         tile.style.height = tileSize + "px";
+        tile.style.opacity = 0.1;
 
         tile.addEventListener('mouseover', () => {
-            randomizeColor(tile);
+            setColor(tile);
         });
         etchContainer.appendChild(tile);
 
@@ -30,12 +31,22 @@ function deleteGrid(){
     containerToBeDeleted.remove();
 }
 
-function randomizeColor(tile){
-    let red = Math.floor(Math.random() * 255);
-    let blue = Math.floor(Math.random() * 255);
-    let green = Math.floor(Math.random() * 255);
+function setColor(tile){
+    let styles = window.getComputedStyle(tile); //gets the computed styles of an element
+    let tileOpacity = Number(styles.getPropertyValue("opacity")); //returns the value of the specified property
+    tileOpacity += 0.1;
 
-    tile.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+    if(document.querySelector('#rainbow-mode').checked){
+        let red = Math.floor(Math.random() * 255);
+        let blue = Math.floor(Math.random() * 255);
+        let green = Math.floor(Math.random() * 255);
+
+        tile.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+    } else {
+        tile.style.backgroundColor = 'blueviolet';
+    }
+
+    tile.style.opacity = tileOpacity;
 }
 
 const resetButton = document.querySelector('#reset-btn');
