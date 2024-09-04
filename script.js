@@ -53,7 +53,7 @@ const resetButton = document.querySelector('#reset-btn');
 resetButton.addEventListener('click', () => {
     let desiredRows = prompt('Enter the number of rows you would like! (Between 1 - 100)');
 
-    while(desiredRows > 100 || desiredRows <= 0 || !Number.isInteger(desiredRows)){
+    while(desiredRows > 100 || desiredRows <= 0){
         desiredRows = prompt('You entered an invalid input. Please enter a number between 1 and 100');
     }
 
